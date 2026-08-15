@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Procedimiento — Videos 3D personalizados antes de cirugía</title>
+<meta name="description" content="Mi Procedimiento integra videos 3D personalizados al portal del hospital para que cada paciente entienda, antes de entrar a quirófano, exactamente qué le van a hacer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101B2D;
+    --paper:#F6F4EF;
+    --paper-dim:#EDEAE1;
+    --sage:#3D6E64;
+    --sage-dim:#E4EDE9;
+    --gold:#D9A441;
+    --line:#D9D4C8;
+    --muted:#5B6270;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Inter',sans-serif; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif; font-weight:600; margin:0; letter-spacing:-.01em;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--sage); font-weight:500; margin-bottom:.9rem;
+  }
+  a{color:inherit;}
+  p{margin:0;}
+  img{max-width:100%;}
+  ::selection{background:var(--gold); color:var(--ink);}
+
+  /* ---- nav ---- */
+  nav{
+    position:sticky; top:0; z-index:50; background:rgba(246,244,239,.92);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:.9rem 5vw;
+  }
+  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem;}
+  .brand span{color:var(--sage);}
+  .navlinks{display:flex; gap:1.6rem; font-size:.85rem;}
+  .navlinks a{text-decoration:none; color:var(--muted); transition:color .2s;}
+  .navlinks a:hover{color:var(--ink);}
+  @media (max-width:800px){ .navlinks{display:none;} }
+
+  section{padding:6.5rem 5vw;}
+  .section-inner{max-width:1080px; margin:0 auto;}
+
+  /* ---- hero ---- */
+  .hero{
+    display:grid; grid-template-columns:1.15fr .85fr; gap:3.5rem; align-items:center;
+    padding-top:5rem; padding-bottom:5rem;
+  }
+  .hero h1{font-size:clamp(2.2rem,4.2vw,3.4rem); line-height:1.08;}
+  .hero .lede{font-size:1.08rem; color:var(--muted); max-width:46ch; margin-top:1.3rem;}
+  .cta-row{display:flex; gap:.9rem; margin-top:2.1rem; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:.8rem 1.5rem; border-radius:3px; font-size:.9rem;
+    font-weight:500; text-decoration:none; transition:transform .2s ease, background .2s ease;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-primary:hover{background:var(--sage);}
+  .btn-ghost{border:1px solid var(--line); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ink);}
+
+  .pulse-wrap{position:relative;}
+  .pulse-card{
+    background:var(--ink); border-radius:6px; padding:2.4rem 1.6rem 1.6rem; color:var(--paper);
+  }
+  .pulse-label{font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.1em;
+    text-transform:uppercase; color:#8CA69D; display:flex; justify-content:space-between; margin-bottom:.6rem;}
+  svg.pulseline{width:100%; height:auto; display:block;}
+  .pulse-note{font-size:.78rem; color:#9AA6AE; margin-top:.9rem; line-height:1.4;}
+
+  /* ---- stat callout ---- */
+  .stat-block{
+    display:grid; grid-template-columns:auto 1fr; gap:2rem; align-items:center;
+    background:var(--white); border:1px solid var(--line); border-radius:6px;
+    padding:2.2rem 2.4rem; margin-top:2.4rem;
+  }
+  .stat-num{font-family:'Fraunces',serif; font-size:3.4rem; font-weight:600; color:var(--sage); line-height:1;}
+  .stat-desc{font-size:.95rem; color:var(--muted); max-width:56ch;}
+  @media (max-width:700px){ .stat-block{grid-template-columns:1fr;} }
+
+  .prose{max-width:66ch; font-size:1rem; color:var(--muted);}
+  .prose + .prose{margin-top:1rem;}
+
+  h2.section-title{font-size:clamp(1.6rem,3vw,2.1rem); margin-bottom:1.6rem;}
+
+  /* ---- two col cards ---- */
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:2rem;}
+  @media (max-width:750px){ .two-col{grid-template-columns:1fr;} }
+  .card{
+    background:var(--white); border:1px solid var(--line); border-radius:6px;
+    padding:1.8rem; border-top:3px solid var(--sage);
+  }
+  .card.gold{border-top-color:var(--gold);}
+  .card h3{font-size:1.05rem; margin-bottom:.6rem;}
+  .card p{font-size:.92rem; color:var(--muted);}
+
+  /* ---- steps ---- */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:2.4rem; counter-reset:step;}
+  @media (max-width:850px){ .steps{grid-template-columns:1fr 1fr;} }
+  @media (max-width:500px){ .steps{grid-template-columns:1fr;} }
+  .step{position:relative; padding-top:.4rem;}
+  .step-num{
+    font-family:'IBM Plex Mono',monospace; font-size:.75rem; color:var(--gold); font-weight:500;
+    margin-bottom:.7rem; display:block;
+  }
+  .step h4{font-family:'Fraunces',serif; font-weight:500; font-size:1rem; margin-bottom:.4rem;}
+  .step p{font-size:.86rem; color:var(--muted);}
+
+  /* ---- core grid ---- */
+  .core-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; margin-top:2.2rem;}
+  @media (max-width:850px){ .core-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:550px){ .core-grid{grid-template-columns:1fr;} }
+  .core-card{background:var(--sage-dim); border-radius:6px; padding:1.5rem;}
+  .core-card h4{font-family:'Fraunces',serif; font-weight:600; font-size:.98rem; color:var(--sage); margin-bottom:.5rem;}
+  .core-card p{font-size:.87rem; color:#3C4A45;}
+
+  /* ---- exponential ---- */
+  .expo-block{
+    background:var(--ink); color:var(--paper); border-radius:6px; padding:2.4rem;
+    margin-top:2.2rem; display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center;
+  }
+  @media (max-width:750px){ .expo-block{grid-template-columns:1fr;} }
+  .expo-block .eyebrow{color:var(--gold);}
+  .expo-block p{color:#C7CDD6; font-size:.95rem;}
+  .expo-arrow{font-family:'Fraunces',serif; font-style:italic; font-size:1.3rem; color:var(--gold);}
+
+  /* ---- dofa ---- */
+  .dofa-grid{display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2.2rem;}
+  @media (max-width:700px){ .dofa-grid{grid-template-columns:1fr;} }
+  .dofa-card{
+    border-radius:6px; padding:1.5rem 1.6rem; cursor:pointer; border:1px solid var(--line);
+    background:var(--white); transition:box-shadow .2s ease;
+  }
+  .dofa-card:hover{box-shadow:0 6px 18px rgba(16,27,45,.08);}
+  .dofa-head{display:flex; justify-content:space-between; align-items:center;}
+  .dofa-head h4{font-family:'Fraunces',serif; font-size:1.05rem; font-weight:600;}
+  .dofa-chevron{font-size:.8rem; color:var(--muted); transition:transform .2s ease;}
+  .dofa-card.open .dofa-chevron{transform:rotate(90deg);}
+  .dofa-list{list-style:none; margin:0; padding:0; max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .dofa-card.open .dofa-list{max-height:600px; margin-top:1rem;}
+  .dofa-list li{font-size:.86rem; color:var(--muted); padding:.4rem 0; border-top:1px solid var(--line);}
+  .dofa-list li:first-child{border-top:none;}
+  .dofa-D{border-top:3px solid #B4674A;} .dofa-O{border-top:3px solid var(--sage);}
+  .dofa-F{border-top:3px solid var(--gold);} .dofa-A{border-top:3px solid #5B6BA0;}
+
+  /* ---- equipo / contacto ---- */
+  .team-row{display:flex; gap:1.2rem; margin-top:2rem; flex-wrap:wrap;}
+  .team-card{background:var(--white); border:1px solid var(--line); border-radius:6px; padding:1.4rem 1.6rem; flex:1 1 240px;}
+  .team-card .role{font-family:'IBM Plex Mono',monospace; font-size:.7rem; color:var(--sage); text-transform:uppercase; letter-spacing:.08em; margin-bottom:.35rem;}
+  .team-card h4{font-family:'Fraunces',serif; font-size:1.05rem;}
+
+  footer{
+    padding:2.4rem 5vw; border-top:1px solid var(--line); display:flex; justify-content:space-between;
+    align-items:center; flex-wrap:wrap; gap:1rem; font-size:.78rem; color:var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Mi <span>Procedimiento</span></div>
+  <div class="navlinks">
+    <a href="#problema">Problema</a>
+    <a href="#propuesta">Propuesta</a>
+    <a href="#funciona">Cómo funciona</a>
+    <a href="#valor">Modelo de valor</a>
+    <a href="#dofa">DOFA</a>
+    <a href="#equipo">Equipo</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">Portal hospitalario · Contenido 3D personalizado</div>
+    <h1>Antes de entrar a cirugía, que el paciente sepa exactamente qué va a pasar.</h1>
+    <p class="lede">Mi Procedimiento habilita, dentro del portal del hospital, un video 3D del procedimiento específico de cada paciente — no uno genérico, sino el suyo — disponible las veces que lo necesite antes de entrar a quirófano.</p>
+    <div class="cta-row">
+      <a href="#propuesta" class="btn btn-primary">Ver la propuesta</a>
+      <a href="#equipo" class="btn btn-ghost">Contacto</a>
+    </div>
+  </div>
+  <div class="pulse-wrap">
+    <div class="pulse-card">
+      <div class="pulse-label"><span>Antes</span><span>Con Mi Procedimiento</span></div>
+      <svg class="pulseline" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="0,60 20,60 30,20 40,95 50,10 60,105 70,45 80,60 95,60 105,50 115,68 125,60"
+          fill="none" stroke="#B4674A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="140,60 400,60" fill="none" stroke="#2A3B4A" stroke-width="1" stroke-dasharray="2 4"/>
+        <polyline id="calmline" points="160,60 190,60 210,45 230,60 250,52 270,60 400,60"
+          fill="none" stroke="#7FBBA9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class="pulse-note">La ansiedad preoperatoria baja cuando el paciente entiende, con claridad visual, qué le van a hacer — y puede volver a verlo cuantas veces quiera.</p>
+    </div>
+  </div>
+</section>
+
+<section id="problema">
+  <div class="section-inner">
+    <div class="eyebrow">El problema</div>
+    <h2 class="section-title">Cinco minutos de consulta no alcanzan para explicar una cirugía.</h2>
+    <p class="prose">Someterse a una cirugía genera incertidumbre y miedo a lo desconocido. En la consulta preoperatoria, el médico dispone de pocos minutos para explicar el procedimiento, con lenguaje técnico centrado en la parte clínica — dejando de lado lo que el paciente realmente necesita: entender qué va a sentir, antes, durante y después.</p>
+    <p class="prose">Muchos pacientes asienten sin comprender del todo, y después deben firmar un consentimiento informado extenso y técnico que pocos leen a fondo.</p>
+    <div class="stat-block">
+      <div class="stat-num">&lt;50%</div>
+      <div class="stat-desc">de los pacientes afirma haber entendido realmente el consentimiento informado que firmó antes de su cirugía — la consecuencia directa es llegar al procedimiento con más miedo y ansiedad de la necesaria.</div>
+    </div>
+  </div>
+</section>
+
+<section id="propuesta" style="background:var(--paper-dim);">
+  <div class="section-inner">
+    <div class="eyebrow">La propuesta</div>
+    <h2 class="section-title">Integrar la solución donde ya vive la información del paciente: el portal del hospital.</h2>
+    <p class="prose">Cuando el médico agenda una cirugía, habilita en el perfil de ese paciente un apartado exclusivo — "Mi Procedimiento" — con un video explicativo en 3D que muestra, paso a paso, exactamente lo que le van a hacer.</p>
+    <div class="two-col">
+      <div class="card">
+        <h3>Qué lo hace diferente</h3>
+        <p>No es un PDF más ni una llamada de seguimiento. Es la primera vez que el portal del hospital deja de ser solo una herramienta para agendar citas y ver resultados, y se convierte en una herramienta que explica — habilitada por el propio médico, según el caso específico de cada paciente.</p>
+      </div>
+      <div class="card gold">
+        <h3>El plus multimedia y educativo</h3>
+        <p>La misma biblioteca de videos 3D no se queda solo para los pacientes: también se habilita, con fines educativos, para estudiantes de medicina, enfermería y programas de residencia, como apoyo dentro y fuera del aula.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="funciona">
+  <div class="section-inner">
+    <div class="eyebrow">Cómo funciona</div>
+    <h2 class="section-title">De la agenda quirúrgica al apartado del paciente.</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h4>Se agenda la cirugía</h4>
+        <p>El médico programa el procedimiento en el sistema del hospital, como ya lo hace hoy.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h4>Se habilita el video</h4>
+        <p>El médico activa, en el perfil del paciente, el video 3D correspondiente a su procedimiento específico.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h4>El paciente lo consulta</h4>
+        <p>Aparece en "Mi Procedimiento", dentro del portal, disponible cuando el paciente quiera verlo.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <h4>Llega más tranquilo</h4>
+        <p>Entra a quirófano con la explicación clara y repasada, no con una idea a medias de la consulta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="valor" style="background:var(--paper-dim);">
+  <div class="section-inner">
+    <div class="eyebrow">Modelo de valor</div>
+    <h2 class="section-title">Los seis CORE de generación de valor</h2>
+    <div class="core-grid">
+      <div class="core-card"><h4>Cliente</h4><p>El paciente que va a cirugía y llega con ansiedad por no entender bien qué le van a hacer; también el médico, que necesita explicar sin gastar toda la consulta en eso.</p></div>
+      <div class="core-card"><h4>Oferta</h4><p>Un video 3D del procedimiento específico de cada paciente, habilitado por su propio médico, disponible las veces que lo quiera ver antes de entrar a quirófano.</p></div>
+      <div class="core-card"><h4>Recursos y competencias</h4><p>La capacidad de producir contenido médico 3D personalizado y conectarlo con la infraestructura ya existente del hospital — eso es lo difícil de copiar, no el video en sí.</p></div>
+      <div class="core-card"><h4>Estructura</h4><p>Un equipo pequeño donde un médico valida el contenido, alguien desarrolla el 3D (o se apoya en IA), y alguien más se encarga de la integración técnica con el hospital.</p></div>
+      <div class="core-card"><h4>Ecosistema</h4><p>Alianzas con hospitales como canal principal, y con universidades de medicina como segundo mercado, ya que la misma biblioteca sirve para enseñar a estudiantes y residentes.</p></div>
+      <div class="core-card"><h4>Renovación</h4><p>Actualizar el contenido cada vez que cambien los protocolos médicos, y ajustar el producto con lo que digan pacientes y médicos que ya lo hayan usado.</p></div>
+    </div>
+
+    <div class="expo-block">
+      <div>
+        <div class="eyebrow">El reto exponencial</div>
+        <p>Cada video nuevo cuesta tiempo y dinero de animadores — crecer así significa contratar más gente, y eso no escala.</p>
+      </div>
+      <div>
+        <p class="expo-arrow">De animación manual → producción con IA generativa 3D</p>
+        <p style="margin-top:.6rem;">Para que ampliar la biblioteca de procedimientos no dependa de cuánta gente se contrata, sino de la capacidad de una plataforma externa que el equipo no tiene que poseer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dofa">
+  <div class="section-inner">
+    <div class="eyebrow">Análisis</div>
+    <h2 class="section-title">DOFA</h2>
+    <p class="prose">Toca cada bloque para ver el detalle.</p>
+    <div class="dofa-grid" id="dofaGrid"></div>
+  </div>
+</section>
+
+<section id="equipo" style="background:var(--paper-dim);">
+  <div class="section-inner">
+    <div class="eyebrow">Equipo</div>
+    <h2 class="section-title">Detrás del proyecto</h2>
+    <p class="prose">Proyecto académico desarrollado en la Universidad Militar Nueva Granada.</p>
+    <div class="team-row">
+      <div class="team-card">
+        <div class="role">Autor</div>
+        <h4>Juan Sebastian Vera Legro</h4>
+      </div>
+      <div class="team-card">
+        <div class="role">Autora</div>
+        <h4>Daniela Beltrán Molina</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Mi Procedimiento — Universidad Militar Nueva Granada</span>
+  <span id="year"></span>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const DOFA = [
+    { letter:'D', name:'Debilidades', cls:'dofa-D', items:[
+      'Altos costos de producción en archivos multimedia con IA o animadores.',
+      'Tiempo de desarrollo de una biblioteca amplia de procedimientos.',
+      'Dependencia de la infraestructura tecnológica de los portales de los hospitales.',
+      'Necesidad de actualización constante de los procedimientos.'
+    ]},
+    { letter:'O', name:'Oportunidades', cls:'dofa-O', items:[
+      'Incremento de la cultura general sobre cirugías y procedimientos.',
+      'Alianza con universidades para la educación médica.',
+      'Aplicación en diferentes instituciones.',
+      'Nuevos servicios: pre operatorio, recuperación y cuidados posteriores.',
+      'Posibilidad de apoyo externo: alianzas, financiación, programas de innovación.',
+      'Escalabilidad internacional.'
+    ]},
+    { letter:'F', name:'Fortalezas', cls:'dofa-F', items:[
+      'Información visual y comprensible.',
+      'Acceso ilimitado al contenido.',
+      'Integración con el portal hospitalario y vinculación al historial del paciente.',
+      'Reducción de la incertidumbre.',
+      'Recurso educativo reutilizable.'
+    ]},
+    { letter:'A', name:'Amenazas', cls:'dofa-A', items:[
+      'Limitaciones presupuestarias futuras.',
+      'Cambios en las normativas sobre información médica.',
+      'Riesgos de ciberseguridad.',
+      'Desactualización del contenido.',
+      'Fallas técnicas con los servidores.'
+    ]},
+  ];
+
+  const grid = document.getElementById('dofaGrid');
+  DOFA.forEach(block=>{
+    const card = document.createElement('div');
+    card.className = `dofa-card ${block.cls}`;
+    card.innerHTML = `
+      <div class="dofa-head">
+        <h4>${block.letter} · ${block.name}</h4>
+        <span class="dofa-chevron">▸</span>
+      </div>
+      <ul class="dofa-list">${block.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+    `;
+    card.addEventListener('click', ()=> card.classList.toggle('open'));
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
