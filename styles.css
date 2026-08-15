@@ -1,0 +1,175 @@
+:root {
+  --ink:#101B2D; --paper:#F6F4EF; --paper-dim:#EDEAE1;
+  --sage:#3D6E64; --sage-dim:#E4EDE9; --gold:#D9A441;
+  --slate:#5B6BA0; --terra:#B4674A;
+  --line:#D9D4C8; --muted:#5B6270; --white:#FFFFFF;
+  --tint1:#E4EDE9; --tint2:#F6ECD6; --card1:#D8E7E1; --card2:#F0DFB8; --gray:#C7C2B4;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0; height: 100%; overflow: hidden;
+  font-family: 'Inter', sans-serif; color: var(--ink); background: var(--paper);
+}
+h1, h2, h3, h4 { font-family: 'Fraunces', serif; margin: 0; font-weight: 600; letter-spacing:-.01em; }
+a { color: var(--sage); }
+::selection{ background: var(--gold); color: var(--ink); }
+
+.deck { position: relative; width: 100vw; height: 100vh; padding-top: 46px; }
+.slide {
+  position: absolute; inset: 0; top: 46px; display: flex; flex-direction: column;
+  justify-content: center; padding: 4vh 6vw 8vh; opacity: 0; pointer-events: none;
+  transition: opacity .35s ease; overflow-y: auto;
+}
+.slide.active { opacity: 1; pointer-events: auto; }
+.slide.dark { background: var(--ink); color: var(--paper); }
+.slide.dark .muted { color: #C7CDD6; }
+.slide.light { background: var(--paper); color: var(--ink); }
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .14em;
+  font-weight: 500; color: var(--sage); text-transform: uppercase; margin-bottom: .6rem;
+}
+.dark .eyebrow { color: var(--gold); }
+h1 { font-size: 2.9rem; }
+h2 { font-size: 1.85rem; color: var(--ink); }
+.dark h2 { color: var(--paper); }
+.subtitle { font-size: 1rem; color: var(--muted); margin-top: .5rem; max-width: 68ch; }
+.dark .subtitle { color: #C7CDD6; }
+.decor { position: absolute; right: -6vw; bottom: -8vh; width: 32vw; height: 32vw; border-radius: 50%; background: var(--sage); opacity: .35; }
+.decor2 { position: absolute; right: -2vw; bottom: -14vh; width: 22vw; height: 22vw; border-radius: 50%; background: var(--gold); opacity: .3; }
+
+/* ---- top bar ---- */
+.topbar { position: fixed; top: 0; left: 0; right: 0; height: 46px; z-index: 20; background: var(--white); border-bottom: 1px solid var(--line); display: flex; align-items: center; padding: 0 1.2rem; gap: .3rem; overflow-x: auto; }
+.progress { position: fixed; top: 45px; left: 0; height: 3px; background: var(--gold); z-index: 21; transition: width .35s ease; }
+.jumpbtn { flex: 0 0 auto; background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: .72rem; color: var(--muted); padding: .35rem .6rem; border-radius: 20px; white-space: nowrap; }
+.jumpbtn:hover { background: var(--tint1); color: var(--sage); }
+.jumpbtn.active { background: var(--ink); color: var(--paper); font-weight: 600; }
+
+/* ---- quote / value boxes ---- */
+.quote-box { background: var(--tint2); border-radius: 6px; padding: .9rem 1.3rem; margin-top: 1.1rem; font-size: .86rem; line-height: 1.4; }
+.value-box { background: var(--ink); color: var(--paper); border-radius: 6px; padding: 1.15rem 1.5rem; margin-top: 1.1rem; }
+.value-box .label { font-family:'IBM Plex Mono',monospace; font-size: .7rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .4rem; }
+.value-box p { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.02rem; line-height: 1.4; margin: 0; }
+
+/* ---- section label ---- */
+.section-label { font-family:'IBM Plex Mono',monospace; font-size: .75rem; font-weight: 600; color: var(--sage); margin: 1.1rem 0 .3rem; text-transform: uppercase; letter-spacing: .06em; }
+
+/* ---- two col (dolor/alegria style) ---- */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-top: .8rem; }
+.col-card { border-radius: 6px; padding: 1.15rem 1.4rem; }
+.col-card h3 { font-size: 1.02rem; margin-bottom: .5rem; }
+.col-card p { font-size: .89rem; line-height: 1.4; color: var(--muted); margin: 0; }
+.col-dolor { background: var(--tint2); } .col-dolor h3 { color: var(--terra); }
+.col-alegria { background: var(--tint1); } .col-alegria h3 { color: var(--sage); }
+
+/* ---- CORE grid ---- */
+.core-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-top: .9rem; }
+.core-card { background: var(--tint1); border-radius: 6px; padding: .9rem 1.05rem; border-left: 4px solid var(--sage); }
+.core-label { font-family:'Fraunces',serif; font-weight: 600; font-size: .88rem; color: var(--sage); margin-bottom: .3rem; }
+.core-text { font-size: .82rem; color: #33423D; line-height: 1.35; }
+
+/* ---- three col / dim cards (perfil XXI, QTA) ---- */
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.4rem; }
+.dim-card { background: var(--white); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.dim-bar { height: 5px; }
+.dim-bar.c1 { background: var(--sage); } .dim-bar.c2 { background: var(--gold); } .dim-bar.c3 { background: var(--slate); }
+.dim-body { padding: 1rem 1.15rem; }
+.dim-body h3 { font-size: 1rem; margin-bottom: .5rem; }
+.dim-body p { font-size: .84rem; color: var(--muted); line-height: 1.4; margin: 0; }
+.pending { color: var(--gray); font-style: italic; }
+
+/* ---- quad grid (DOFA plain) ---- */
+.quad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.1rem; }
+.quad-card { background: var(--tint1); border-radius: 6px; padding: 1rem 1.2rem; border-left: 6px solid var(--sage); }
+.quad-card:nth-child(2) { border-left-color: var(--terra); background: var(--tint2); }
+.quad-card:nth-child(3) { border-left-color: var(--gold); background: var(--tint2); }
+.quad-card:nth-child(4) { border-left-color: var(--slate); }
+.quad-title { font-family:'Fraunces',serif; font-weight: 600; font-size: 1rem; margin-bottom: .5rem; }
+.trend { margin-bottom: .5rem; padding-bottom: .5rem; border-bottom: 1px solid rgba(0,0,0,.06); font-size: .85rem; line-height: 1.35; }
+.trend:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+/* ---- DOFA cross matrix (FO/FA/DO/DA) ---- */
+.dofa-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem; }
+.cross-cell { background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: .85rem 1.1rem; cursor: pointer; border-left: 6px solid var(--sage); transition: box-shadow .2s ease; }
+.cross-cell:hover { box-shadow: 0 6px 16px rgba(16,27,45,.08); }
+.cross-cell:nth-child(2) { border-left-color: var(--terra); }
+.cross-cell:nth-child(3) { border-left-color: var(--gold); }
+.cross-cell:nth-child(4) { border-left-color: var(--slate); }
+.cross-head { display: flex; align-items: center; justify-content: space-between; }
+.cross-label { font-family:'Fraunces',serif; font-weight: 600; font-size: 1rem; }
+.cross-hint { font-size: .72rem; color: var(--muted); margin-top: .1rem; }
+.chevron { font-size: .9rem; color: var(--sage); transition: transform .25s ease; }
+.cross-cell.open .chevron { transform: rotate(90deg); }
+.cross-detail-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.cross-cell.open .cross-detail-wrap { grid-template-rows: 1fr; }
+.cross-detail-inner { overflow: hidden; }
+.cross-detail { font-size: .84rem; line-height: 1.4; padding-top: .55rem; color: #33423D; }
+
+/* ---- PESTEL expandable cards ---- */
+.pestel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem; margin-top: 1.2rem; }
+.pestel-card { background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: .85rem 1.05rem; cursor: pointer; }
+.pestel-head { display: flex; align-items: center; gap: .55rem; }
+.pestel-letter { width: 28px; height: 28px; border-radius: 6px; background: var(--ink); color: var(--paper); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: .85rem; flex: 0 0 auto; }
+.pestel-name { font-weight: 600; font-size: .88rem; flex: 1; }
+.pestel-card.open .chevron { transform: rotate(90deg); }
+.pestel-detail-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+.pestel-card.open .pestel-detail-wrap { grid-template-rows: 1fr; }
+.pestel-detail-inner { overflow: hidden; }
+.pestel-q { font-size: .74rem; color: var(--sage); font-style: italic; margin-top: .55rem; }
+.pestel-item { margin-top: .5rem; padding-top: .5rem; border-top: 1px solid var(--line); }
+.pestel-item:first-of-type { border-top: none; padding-top: 0; }
+.pestel-a { font-size: .8rem; line-height: 1.35; }
+.pestel-src { font-size: .67rem; margin-top: .3rem; }
+.pestel-src a { color: var(--muted); text-decoration: underline; }
+
+/* ---- cadena de valor columns ---- */
+.five-col { display: grid; grid-template-columns: repeat(5, 1fr); gap: .6rem; margin-top: .9rem; }
+.four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: .9rem; margin-top: .9rem; }
+.num-card { background: var(--tint1); border-radius: 6px; padding: .75rem .8rem; }
+.num-card h3 { font-size: .82rem; margin-bottom: .35rem; }
+.num-card p { font-size: .74rem; color: var(--muted); line-height: 1.35; margin: 0; }
+.num-badge { width: 26px; height: 26px; border-radius: 50%; background: var(--sage); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 600; margin-bottom: .5rem; font-size: .78rem; }
+
+/* ---- radar pills ---- */
+.pill { display: inline-block; font-size: .62rem; font-weight: 600; color: var(--white); padding: 2px 9px; border-radius: 20px; margin-top: .3rem; }
+.pill.now { background: var(--sage); }
+.pill.soon { background: var(--gold); color: var(--ink); }
+.pill.later { background: var(--gray); color: var(--ink); }
+.bottom-note { background: var(--ink); color: var(--paper); border-radius: 6px; padding: .8rem 1.2rem; margin-top: 1rem; font-size: .85rem; line-height: 1.35; }
+.bottom-note b { color: var(--gold); }
+
+/* ---- link grid (conexión) ---- */
+.link-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin-top: 1.4rem; }
+.link-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 6px; padding: .95rem 1.2rem; cursor: pointer; transition: transform .2s ease, background .2s ease; }
+.link-card:hover { transform: translateY(-3px); background: rgba(255,255,255,.1); }
+.link-card h4 { margin: 0 0 .35rem 0; font-size: .9rem; color: var(--gold); }
+.link-card p { margin: 0; font-size: .82rem; color: #C7CDD6; line-height: 1.35; }
+.link-card .goto { font-size: .68rem; color: #8CA69D; font-weight: 600; margin-top: .4rem; display: block; }
+
+/* ---- sources list ---- */
+.sources-list { list-style: none; margin-top: 1.3rem; padding: 0; columns: 2; column-gap: 2.5rem; font-size: .8rem; color: var(--muted); line-height: 1.55; }
+.sources-list li { break-inside: avoid; margin-bottom: .55rem; }
+.sources-list a { color: var(--sage); text-decoration: none; font-weight: 600; }
+.sources-list a:hover { text-decoration: underline; }
+.sources-list .tag { display: block; font-size: .72rem; color: var(--muted); font-weight: normal; }
+.sources-list .noLink { font-weight: 600; color: var(--ink); }
+
+.footer-inline { position: absolute; top: .7rem; right: 6vw; font-size: .6rem; color: var(--muted); opacity: .7; }
+.slide.dark .footer-inline { color: #8CA69D; }
+
+/* ---- deck nav ---- */
+.nav { position: fixed; right: 6vw; bottom: 2vh; display: flex; align-items: center; gap: .8rem; z-index: 10; }
+.nav button { width: 36px; height: 36px; border-radius: 50%; border: none; cursor: pointer; background: var(--ink); color: var(--paper); font-size: 1rem; line-height: 1; }
+.nav button:hover { background: var(--sage); }
+.nav button:disabled { background: var(--gray); cursor: default; }
+.counter { font-family:'IBM Plex Mono',monospace; font-size: .74rem; color: var(--muted); min-width: 3.4rem; text-align: center; }
+.hint { position: fixed; left: 6vw; bottom: 2vh; font-size: .68rem; color: var(--gray); z-index: 10; }
+
+@media (max-width: 900px) {
+  .quad-grid, .two-col, .dofa-wrap, .pestel-grid, .core-grid, .three-col, .link-grid { grid-template-columns: 1fr 1fr; }
+  .five-col, .four-col { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .quad-grid, .two-col, .dofa-wrap, .pestel-grid, .core-grid, .three-col, .link-grid, .five-col, .four-col { grid-template-columns: 1fr; }
+  .sources-list { columns: 1; }
+  h1 { font-size: 2.1rem; }
+}

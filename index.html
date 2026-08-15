@@ -3,376 +3,353 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi Procedimiento — Videos 3D personalizados antes de cirugía</title>
-<meta name="description" content="Mi Procedimiento integra videos 3D personalizados al portal del hospital para que cada paciente entienda, antes de entrar a quirófano, exactamente qué le van a hacer.">
+<title>Mi Procedimiento — Presentación completa</title>
+<meta name="description" content="Mi Procedimiento: videos 3D personalizados en el portal hospitalario. Empresa, DOFA, PESTEL, cadena de valor y más.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#101B2D;
-    --paper:#F6F4EF;
-    --paper-dim:#EDEAE1;
-    --sage:#3D6E64;
-    --sage-dim:#E4EDE9;
-    --gold:#D9A441;
-    --line:#D9D4C8;
-    --muted:#5B6270;
-    --white:#FFFFFF;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0; background:var(--paper); color:var(--ink);
-    font-family:'Inter',sans-serif; line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{font-family:'Fraunces',serif; font-weight:600; margin:0; letter-spacing:-.01em;}
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--sage); font-weight:500; margin-bottom:.9rem;
-  }
-  a{color:inherit;}
-  p{margin:0;}
-  img{max-width:100%;}
-  ::selection{background:var(--gold); color:var(--ink);}
-
-  /* ---- nav ---- */
-  nav{
-    position:sticky; top:0; z-index:50; background:rgba(246,244,239,.92);
-    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
-    display:flex; align-items:center; justify-content:space-between;
-    padding:.9rem 5vw;
-  }
-  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem;}
-  .brand span{color:var(--sage);}
-  .navlinks{display:flex; gap:1.6rem; font-size:.85rem;}
-  .navlinks a{text-decoration:none; color:var(--muted); transition:color .2s;}
-  .navlinks a:hover{color:var(--ink);}
-  @media (max-width:800px){ .navlinks{display:none;} }
-
-  section{padding:6.5rem 5vw;}
-  .section-inner{max-width:1080px; margin:0 auto;}
-
-  /* ---- hero ---- */
-  .hero{
-    display:grid; grid-template-columns:1.15fr .85fr; gap:3.5rem; align-items:center;
-    padding-top:5rem; padding-bottom:5rem;
-  }
-  .hero h1{font-size:clamp(2.2rem,4.2vw,3.4rem); line-height:1.08;}
-  .hero .lede{font-size:1.08rem; color:var(--muted); max-width:46ch; margin-top:1.3rem;}
-  .cta-row{display:flex; gap:.9rem; margin-top:2.1rem; flex-wrap:wrap;}
-  .btn{
-    display:inline-block; padding:.8rem 1.5rem; border-radius:3px; font-size:.9rem;
-    font-weight:500; text-decoration:none; transition:transform .2s ease, background .2s ease;
-  }
-  .btn-primary{background:var(--ink); color:var(--paper);}
-  .btn-primary:hover{background:var(--sage);}
-  .btn-ghost{border:1px solid var(--line); color:var(--ink);}
-  .btn-ghost:hover{border-color:var(--ink);}
-
-  .pulse-wrap{position:relative;}
-  .pulse-card{
-    background:var(--ink); border-radius:6px; padding:2.4rem 1.6rem 1.6rem; color:var(--paper);
-  }
-  .pulse-label{font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.1em;
-    text-transform:uppercase; color:#8CA69D; display:flex; justify-content:space-between; margin-bottom:.6rem;}
-  svg.pulseline{width:100%; height:auto; display:block;}
-  .pulse-note{font-size:.78rem; color:#9AA6AE; margin-top:.9rem; line-height:1.4;}
-
-  /* ---- stat callout ---- */
-  .stat-block{
-    display:grid; grid-template-columns:auto 1fr; gap:2rem; align-items:center;
-    background:var(--white); border:1px solid var(--line); border-radius:6px;
-    padding:2.2rem 2.4rem; margin-top:2.4rem;
-  }
-  .stat-num{font-family:'Fraunces',serif; font-size:3.4rem; font-weight:600; color:var(--sage); line-height:1;}
-  .stat-desc{font-size:.95rem; color:var(--muted); max-width:56ch;}
-  @media (max-width:700px){ .stat-block{grid-template-columns:1fr;} }
-
-  .prose{max-width:66ch; font-size:1rem; color:var(--muted);}
-  .prose + .prose{margin-top:1rem;}
-
-  h2.section-title{font-size:clamp(1.6rem,3vw,2.1rem); margin-bottom:1.6rem;}
-
-  /* ---- two col cards ---- */
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:2rem;}
-  @media (max-width:750px){ .two-col{grid-template-columns:1fr;} }
-  .card{
-    background:var(--white); border:1px solid var(--line); border-radius:6px;
-    padding:1.8rem; border-top:3px solid var(--sage);
-  }
-  .card.gold{border-top-color:var(--gold);}
-  .card h3{font-size:1.05rem; margin-bottom:.6rem;}
-  .card p{font-size:.92rem; color:var(--muted);}
-
-  /* ---- steps ---- */
-  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:2.4rem; counter-reset:step;}
-  @media (max-width:850px){ .steps{grid-template-columns:1fr 1fr;} }
-  @media (max-width:500px){ .steps{grid-template-columns:1fr;} }
-  .step{position:relative; padding-top:.4rem;}
-  .step-num{
-    font-family:'IBM Plex Mono',monospace; font-size:.75rem; color:var(--gold); font-weight:500;
-    margin-bottom:.7rem; display:block;
-  }
-  .step h4{font-family:'Fraunces',serif; font-weight:500; font-size:1rem; margin-bottom:.4rem;}
-  .step p{font-size:.86rem; color:var(--muted);}
-
-  /* ---- core grid ---- */
-  .core-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; margin-top:2.2rem;}
-  @media (max-width:850px){ .core-grid{grid-template-columns:1fr 1fr;} }
-  @media (max-width:550px){ .core-grid{grid-template-columns:1fr;} }
-  .core-card{background:var(--sage-dim); border-radius:6px; padding:1.5rem;}
-  .core-card h4{font-family:'Fraunces',serif; font-weight:600; font-size:.98rem; color:var(--sage); margin-bottom:.5rem;}
-  .core-card p{font-size:.87rem; color:#3C4A45;}
-
-  /* ---- exponential ---- */
-  .expo-block{
-    background:var(--ink); color:var(--paper); border-radius:6px; padding:2.4rem;
-    margin-top:2.2rem; display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center;
-  }
-  @media (max-width:750px){ .expo-block{grid-template-columns:1fr;} }
-  .expo-block .eyebrow{color:var(--gold);}
-  .expo-block p{color:#C7CDD6; font-size:.95rem;}
-  .expo-arrow{font-family:'Fraunces',serif; font-style:italic; font-size:1.3rem; color:var(--gold);}
-
-  /* ---- dofa ---- */
-  .dofa-grid{display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2.2rem;}
-  @media (max-width:700px){ .dofa-grid{grid-template-columns:1fr;} }
-  .dofa-card{
-    border-radius:6px; padding:1.5rem 1.6rem; cursor:pointer; border:1px solid var(--line);
-    background:var(--white); transition:box-shadow .2s ease;
-  }
-  .dofa-card:hover{box-shadow:0 6px 18px rgba(16,27,45,.08);}
-  .dofa-head{display:flex; justify-content:space-between; align-items:center;}
-  .dofa-head h4{font-family:'Fraunces',serif; font-size:1.05rem; font-weight:600;}
-  .dofa-chevron{font-size:.8rem; color:var(--muted); transition:transform .2s ease;}
-  .dofa-card.open .dofa-chevron{transform:rotate(90deg);}
-  .dofa-list{list-style:none; margin:0; padding:0; max-height:0; overflow:hidden; transition:max-height .3s ease;}
-  .dofa-card.open .dofa-list{max-height:600px; margin-top:1rem;}
-  .dofa-list li{font-size:.86rem; color:var(--muted); padding:.4rem 0; border-top:1px solid var(--line);}
-  .dofa-list li:first-child{border-top:none;}
-  .dofa-D{border-top:3px solid #B4674A;} .dofa-O{border-top:3px solid var(--sage);}
-  .dofa-F{border-top:3px solid var(--gold);} .dofa-A{border-top:3px solid #5B6BA0;}
-
-  /* ---- equipo / contacto ---- */
-  .team-row{display:flex; gap:1.2rem; margin-top:2rem; flex-wrap:wrap;}
-  .team-card{background:var(--white); border:1px solid var(--line); border-radius:6px; padding:1.4rem 1.6rem; flex:1 1 240px;}
-  .team-card .role{font-family:'IBM Plex Mono',monospace; font-size:.7rem; color:var(--sage); text-transform:uppercase; letter-spacing:.08em; margin-bottom:.35rem;}
-  .team-card h4{font-family:'Fraunces',serif; font-size:1.05rem;}
-
-  footer{
-    padding:2.4rem 5vw; border-top:1px solid var(--line); display:flex; justify-content:space-between;
-    align-items:center; flex-wrap:wrap; gap:1rem; font-size:.78rem; color:var(--muted);
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav>
-  <div class="brand">Mi <span>Procedimiento</span></div>
-  <div class="navlinks">
-    <a href="#problema">Problema</a>
-    <a href="#propuesta">Propuesta</a>
-    <a href="#funciona">Cómo funciona</a>
-    <a href="#valor">Modelo de valor</a>
-    <a href="#dofa">DOFA</a>
-    <a href="#equipo">Equipo</a>
-  </div>
-</nav>
+<div class="topbar" id="topbar"></div>
+<div class="progress" id="progress"></div>
 
-<section class="hero">
-  <div>
-    <div class="eyebrow">Portal hospitalario · Contenido 3D personalizado</div>
-    <h1>Antes de entrar a cirugía, que el paciente sepa exactamente qué va a pasar.</h1>
-    <p class="lede">Mi Procedimiento habilita, dentro del portal del hospital, un video 3D del procedimiento específico de cada paciente — no uno genérico, sino el suyo — disponible las veces que lo necesite antes de entrar a quirófano.</p>
-    <div class="cta-row">
-      <a href="#propuesta" class="btn btn-primary">Ver la propuesta</a>
-      <a href="#equipo" class="btn btn-ghost">Contacto</a>
-    </div>
-  </div>
-  <div class="pulse-wrap">
-    <div class="pulse-card">
-      <div class="pulse-label"><span>Antes</span><span>Con Mi Procedimiento</span></div>
-      <svg class="pulseline" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="0,60 20,60 30,20 40,95 50,10 60,105 70,45 80,60 95,60 105,50 115,68 125,60"
-          fill="none" stroke="#B4674A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <polyline points="140,60 400,60" fill="none" stroke="#2A3B4A" stroke-width="1" stroke-dasharray="2 4"/>
-        <polyline id="calmline" points="160,60 190,60 210,45 230,60 250,52 270,60 400,60"
-          fill="none" stroke="#7FBBA9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <p class="pulse-note">La ansiedad preoperatoria baja cuando el paciente entiende, con claridad visual, qué le van a hacer — y puede volver a verlo cuantas veces quiera.</p>
-    </div>
-  </div>
-</section>
+<div class="deck" id="deck">
 
-<section id="problema">
-  <div class="section-inner">
-    <div class="eyebrow">El problema</div>
-    <h2 class="section-title">Cinco minutos de consulta no alcanzan para explicar una cirugía.</h2>
-    <p class="prose">Someterse a una cirugía genera incertidumbre y miedo a lo desconocido. En la consulta preoperatoria, el médico dispone de pocos minutos para explicar el procedimiento, con lenguaje técnico centrado en la parte clínica — dejando de lado lo que el paciente realmente necesita: entender qué va a sentir, antes, durante y después.</p>
-    <p class="prose">Muchos pacientes asienten sin comprender del todo, y después deben firmar un consentimiento informado extenso y técnico que pocos leen a fondo.</p>
-    <div class="stat-block">
-      <div class="stat-num">&lt;50%</div>
-      <div class="stat-desc">de los pacientes afirma haber entendido realmente el consentimiento informado que firmó antes de su cirugía — la consecuencia directa es llegar al procedimiento con más miedo y ansiedad de la necesaria.</div>
-    </div>
-  </div>
-</section>
+  <!-- 1: INICIO -->
+  <section class="slide dark active">
+    <div class="decor"></div><div class="decor2"></div>
+    <div class="eyebrow">Proyecto · P.T.M.</div>
+    <h1>Mi Procedimiento</h1>
+    <p class="subtitle">Videos 3D personalizados del procedimiento quirúrgico de cada paciente, integrados al portal del hospital, para reducir la ansiedad preoperatoria y mejorar la comprensión del tratamiento.</p>
+    <p class="subtitle" style="margin-top:1.4rem; font-size:.92rem;">Recorre la presentación completa: empresa y CORE · perfil siglo XXI · DOFA · PESTEL · cadena de valor · Radar de Tendencias · Mapa de Problemas · Propuesta de Valor · QTA · síntesis final.</p>
+    <p class="subtitle" style="margin-top:1rem; font-size:.8rem;">Usa las flechas del teclado, los botones ‹ › o haz clic en cualquier sección de la barra superior. Las tarjetas con ▸ se pueden abrir con un clic.</p>
+    <div class="footer-inline">Juan Sebastian Vera Legro · Universidad Militar Nueva Granada</div>
+  </section>
 
-<section id="propuesta" style="background:var(--paper-dim);">
-  <div class="section-inner">
-    <div class="eyebrow">La propuesta</div>
-    <h2 class="section-title">Integrar la solución donde ya vive la información del paciente: el portal del hospital.</h2>
-    <p class="prose">Cuando el médico agenda una cirugía, habilita en el perfil de ese paciente un apartado exclusivo — "Mi Procedimiento" — con un video explicativo en 3D que muestra, paso a paso, exactamente lo que le van a hacer.</p>
+  <!-- 2: EMPRESA Y ORGANIZACIÓN + CORE -->
+  <section class="slide light">
+    <div class="eyebrow">Empresa y organización</div>
+    <h2>Empresa y organización de Mi Procedimiento</h2>
+    <p class="subtitle">Estructura, áreas clave y los seis CORE de generación de valor</p>
+    <div class="quote-box"><b>Estructura propuesta:</b> plana / horizontal. Al ser un equipo pequeño, el desarrollo del producto no necesita muchos niveles jerárquicos — lo que sí se necesita es que las decisiones se tomen rápido, sobre todo en la parte técnica (integración con el portal del hospital, qué animar primero) y en la comercial (qué hospital piloto se consigue). Cuando haya varios hospitales clientes y el equipo crezca, podría verse una estructura más formal, pero en los primeros dos años lo plano permite moverse rápido y ajustar el producto.</div>
+
+    <div class="section-label">Dos áreas clave más críticas</div>
     <div class="two-col">
-      <div class="card">
-        <h3>Qué lo hace diferente</h3>
-        <p>No es un PDF más ni una llamada de seguimiento. Es la primera vez que el portal del hospital deja de ser solo una herramienta para agendar citas y ver resultados, y se convierte en una herramienta que explica — habilitada por el propio médico, según el caso específico de cada paciente.</p>
+      <div class="col-card col-dolor">
+        <h3>Tecnología e innovación</h3>
+        <p>Producir contenido 3D de calidad e integrarlo al sistema de un hospital es lo que define el funcionamiento del producto; sin embargo, los costos de producción de cada video —con animadores 3D o con IA— son bastante elevados.</p>
       </div>
-      <div class="card gold">
+      <div class="col-card col-alegria">
+        <h3>Mercadeo y ventas</h3>
+        <p>Conseguir que un hospital o una institución educativa confíen en el producto y encuentren un valor real en él.</p>
+      </div>
+    </div>
+
+    <div class="section-label">Los seis CORE de generación de valor</div>
+    <div class="core-grid">
+      <div class="core-card"><div class="core-label">Cliente</div><div class="core-text">Pacientes que van a cirugía y llegan con ansiedad por no entender bien qué les van a hacer; también el médico, que necesita explicar sin gastar toda la consulta en eso.</div></div>
+      <div class="core-card"><div class="core-label">Oferta</div><div class="core-text">Un video 3D del procedimiento específico de cada paciente, habilitado por su propio médico dentro del portal del hospital, disponible las veces que lo quiera ver antes de entrar a quirófano.</div></div>
+      <div class="core-card"><div class="core-label">Recursos y competencias</div><div class="core-text">La capacidad de producir contenido médico 3D personalizado y conectarlo con la infraestructura ya existente del hospital — eso es lo difícil de copiar, no el video en sí.</div></div>
+      <div class="core-card"><div class="core-label">Estructura</div><div class="core-text">Un equipo pequeño donde un médico valida el contenido, alguien desarrolla el 3D (o se hace uso de la IA), y alguien más se encarga de la integración técnica con el hospital.</div></div>
+      <div class="core-card"><div class="core-label">Ecosistema</div><div class="core-text">Alianzas con hospitales como canal principal, y con universidades de medicina como segundo mercado, ya que la misma biblioteca sirve para enseñar a estudiantes y residentes.</div></div>
+      <div class="core-card"><div class="core-label">Renovación</div><div class="core-text">Actualizar el contenido cada vez que cambien los protocolos médicos, y ajustar el producto con lo que digan pacientes y médicos que ya lo hayan usado.</div></div>
+    </div>
+  </section>
+
+  <!-- 3: PERFIL DE EMPRESA SIGLO XXI -->
+  <section class="slide light">
+    <div class="eyebrow">Perfil de empresa siglo XXI</div>
+    <h2>Perfil de empresa siglo XXI</h2>
+    <p class="subtitle">Los tres rasgos y el mayor reto identificado para el equipo</p>
+    <div class="three-col">
+      <div class="dim-card">
+        <div class="dim-bar c1"></div>
+        <div class="dim-body">
+          <h3>Inteligente / digital</h3>
+          <p class="pending">Contenido pendiente por desarrollar.</p>
+        </div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-bar c2"></div>
+        <div class="dim-body">
+          <h3>Sostenible / sustentable</h3>
+          <p class="pending">Contenido pendiente por desarrollar.</p>
+        </div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-bar c3"></div>
+        <div class="dim-body">
+          <h3>Exponencial</h3>
+          <p><b>Mayor reto del equipo.</b> Cada video nuevo cuesta tiempo y dinero de animadores, así que crecer significa contratar más gente para producir más contenido — y eso no escala. La idea concreta es dejar de depender solo de animación manual y migrar la producción hacia herramientas de IA generativa 3D, de modo que ampliar la biblioteca de procedimientos no dependa de cuánta gente se contrate, sino de la capacidad de una plataforma externa que no hay que poseer.</p>
+        </div>
+      </div>
+    </div>
+    <div class="quote-box"><b>Conexión con el reto:</b> ahí es donde este reto se conecta directamente con acercarse a un modelo IA-native.</div>
+  </section>
+
+  <!-- 4: DOFA -->
+  <section class="slide light">
+    <div class="eyebrow">Diagnóstico estratégico</div>
+    <h2>DOFA de Mi Procedimiento</h2>
+    <p class="subtitle">Análisis interno y externo — clic en cada cruce FO-FA-DO-DA para ver la estrategia</p>
+    <div class="quad-grid">
+      <div class="quad-card">
+        <div class="quad-title">Fortalezas</div>
+        <div class="trend">Información visual y comprensible.</div>
+        <div class="trend">Acceso ilimitado al contenido.</div>
+        <div class="trend">Integración con el portal hospitalario y vinculación al historial del paciente.</div>
+        <div class="trend">Reducción de la incertidumbre.</div>
+        <div class="trend">Recurso educativo reutilizable.</div>
+      </div>
+      <div class="quad-card">
+        <div class="quad-title">Debilidades</div>
+        <div class="trend">Altos costos de producción en archivos multimedia con IA o animadores.</div>
+        <div class="trend">Tiempo de desarrollo de una biblioteca amplia de procedimientos.</div>
+        <div class="trend">Dependencia de la infraestructura tecnológica de los portales de los hospitales.</div>
+        <div class="trend">Necesidad de actualización constante de los procedimientos.</div>
+      </div>
+      <div class="quad-card">
+        <div class="quad-title">Oportunidades</div>
+        <div class="trend">Incremento de la cultura general sobre cirugías y procedimientos.</div>
+        <div class="trend">Alianza con universidades para la educación médica.</div>
+        <div class="trend">Aplicación en diferentes instituciones.</div>
+        <div class="trend">Generación de nuevos servicios: pre operatorio, recuperación y cuidados posteriores.</div>
+        <div class="trend">Posibilidad de apoyo externo: alianzas, financiación y programas de innovación.</div>
+        <div class="trend">Escalabilidad internacional.</div>
+      </div>
+      <div class="quad-card">
+        <div class="quad-title">Amenazas</div>
+        <div class="trend">Limitaciones presupuestarias futuras.</div>
+        <div class="trend">Cambios en las normativas sobre la información médica.</div>
+        <div class="trend">Riesgos de ciberseguridad.</div>
+        <div class="trend">Desactualización del contenido.</div>
+        <div class="trend">Fallas técnicas con los servidores.</div>
+      </div>
+    </div>
+
+    <div class="dofa-wrap">
+      <div class="cross-cell" onclick="toggleOpen(this)">
+        <div class="cross-head"><div><div class="cross-label">FO</div><div class="cross-hint">Fortalezas × Oportunidades</div></div><div class="chevron">▸</div></div>
+        <div class="cross-detail-wrap"><div class="cross-detail-inner"><div class="cross-detail">
+          <div><b>1.</b> Usar la conexión ya existente con el historial clínico para expandir el proyecto más allá del video: agregar recordatorios personalizados de preparación (ayuno, medicamentos a suspender) y una sección de cuidados posteriores con seguimiento visual del proceso de recuperación, todo dentro del mismo portal.</div>
+          <div style="margin-top:.5rem;"><b>2.</b> Crear una versión pública y simplificada (sin datos personales) de los videos más comunes que el hospital pueda compartir en redes o su sitio web como contenido de divulgación, posicionándolo como referente en educación en salud.</div>
+          <div style="margin-top:.5rem;"><b>3.</b> Presentar métricas de reducción de ansiedad/satisfacción del paciente a fondos de innovación en salud o aseguradoras, como parte de programas de "experiencia del paciente".</div>
+        </div></div></div>
+      </div>
+      <div class="cross-cell" onclick="toggleOpen(this)">
+        <div class="cross-head"><div><div class="cross-label">FA</div><div class="cross-hint">Fortalezas × Amenazas</div></div><div class="chevron">▸</div></div>
+        <div class="cross-detail-wrap"><div class="cross-detail-inner"><div class="cross-detail">
+          <div><b>1.</b> Diseñar la biblioteca de videos con estructura modular (partes reutilizables: anestesia general, preparación de quirófano, etc., separadas de los pasos específicos) para que actualizar un protocolo no implique rehacer el video completo.</div>
+          <div style="margin-top:.5rem;"><b>2.</b> Aplicar controles de acceso estrictos (autenticación de dos factores, cifrado de extremo a extremo) específicamente para el módulo de videos, dado que se integra al historial clínico.</div>
+        </div></div></div>
+      </div>
+      <div class="cross-cell" onclick="toggleOpen(this)">
+        <div class="cross-head"><div><div class="cross-label">DO</div><div class="cross-hint">Debilidades × Oportunidades</div></div><div class="chevron">▸</div></div>
+        <div class="cross-detail-wrap"><div class="cross-detail-inner"><div class="cross-detail">
+          <div><b>1.</b> Priorizar el desarrollo de los 10-15 procedimientos quirúrgicos más comunes a nivel general (no solo los del hospital piloto), para que la biblioteca inicial sea útil y vendible a múltiples instituciones desde el lanzamiento.</div>
+          <div style="margin-top:.5rem;"><b>2.</b> Establecer un convenio donde estudiantes de últimos semestres de medicina o residentes (bajo supervisión docente) participen en la revisión y actualización periódica del contenido como parte de su formación práctica.</div>
+        </div></div></div>
+      </div>
+      <div class="cross-cell" onclick="toggleOpen(this)">
+        <div class="cross-head"><div><div class="cross-label">DA</div><div class="cross-hint">Debilidades × Amenazas</div></div><div class="chevron">▸</div></div>
+        <div class="cross-detail-wrap"><div class="cross-detail-inner"><div class="cross-detail">
+          <div><b>1.</b> Adoptar un modelo de producción híbrido: plantillas 3D genéricas por tipo de cirugía (reduciendo costo) y personalización solo de los elementos clave del caso del paciente.</div>
+          <div style="margin-top:.5rem;"><b>2.</b> Crear un comité interno (médico + legal + producto) que revise trimestralmente cambios normativos y necesidades de actualización de contenido en una sola instancia.</div>
+          <div style="margin-top:.5rem;"><b>3.</b> Implementar almacenamiento local temporal (el video se descarga al dispositivo del paciente antes del día de la cirugía) para que una caída del servidor no impida el acceso justo cuando más ansiedad tiene.</div>
+        </div></div></div>
+      </div>
+    </div>
+    <div class="footer-inline">Mi Procedimiento · DOFA</div>
+  </section>
+
+  <!-- 5: PESTEL -->
+  <section class="slide light">
+    <div class="eyebrow">Diagnóstico estratégico</div>
+    <h2>PESTEL de Mi Procedimiento</h2>
+    <p class="subtitle">Clic en cada factor para ver el detalle y la fuente</p>
+    <div class="pestel-grid" id="pestelGrid"></div>
+    <div class="footer-inline">Mi Procedimiento · PESTEL</div>
+  </section>
+
+  <!-- 6: CADENA DE VALOR -->
+  <section class="slide light">
+    <div class="eyebrow">Diagnóstico estratégico</div>
+    <h2>Cadena de valor de Porter</h2>
+    <p class="subtitle">Actividades primarias, de apoyo y margen</p>
+
+    <div class="section-label">Actividades primarias</div>
+    <div class="five-col">
+      <div class="num-card"><h3>Logística interna</h3><p>Recepción y gestión de la información clínica del paciente proveniente del sistema hospitalario, y organización de la biblioteca de contenidos 3D por tipo de procedimiento.</p></div>
+      <div class="num-card"><h3>Operaciones</h3><p>El médico habilita el procedimiento específico en el perfil del paciente; se ensamblan los módulos correspondientes y se genera el contenido final vinculado al caso.</p></div>
+      <div class="num-card"><h3>Logística externa</h3><p>Entrega del contenido en el portal, dentro de "Mi Procedimiento", con acceso ilimitado y disponible las veces que el paciente lo necesite.</p></div>
+      <div class="num-card"><h3>Marketing y ventas</h3><p>Posicionamiento ante hospitales como herramienta que reduce la ansiedad preoperatoria; alianzas con universidades como canal adicional.</p></div>
+      <div class="num-card"><h3>Servicios</h3><p>Seguimiento del paciente en recuperación, soporte técnico para médicos y pacientes, y actualización según retroalimentación.</p></div>
+    </div>
+
+    <div class="section-label">Actividades de apoyo</div>
+    <div class="four-col">
+      <div class="num-card"><div class="num-badge">A</div><h3>Infraestructura</h3><p>Gestión del proyecto, cumplimiento normativo en salud y relación institucional con los hospitales aliados.</p></div>
+      <div class="num-card"><div class="num-badge">B</div><h3>Talento humano</h3><p>Equipo médico validador, animadores/desarrolladores 3D o especialistas en IA, y colaboración con estudiantes o residentes.</p></div>
+      <div class="num-card"><div class="num-badge">C</div><h3>Desarrollo tecnológico</h3><p>Plataforma de generación de videos 3D, integración con el portal, arquitectura de ciberseguridad, uso de IA para acelerar la producción.</p></div>
+      <div class="num-card"><div class="num-badge">D</div><h3>Aprovisionamiento</h3><p>Licencias de software de animación 3D/IA, servidores o nube, y convenios con proveedores o universidades.</p></div>
+    </div>
+
+    <div class="quote-box" style="margin-top:1rem;"><b>Marketing y ventas → Inteligente/digital:</b> en lugar de vender el producto solo con demos estáticas, el hospital podría usar los datos generados por el propio uso del video (cuántas veces lo vio el paciente, en qué momento, si redujo su ansiedad reportada) como evidencia cuantitativa para atraer nuevas alianzas — la información de uso se convierte en argumento de venta, no solo el producto en sí.</div>
+    <div class="footer-inline">Mi Procedimiento · Cadena de valor</div>
+  </section>
+
+  <!-- 7: RADAR DE TENDENCIAS -->
+  <section class="slide light">
+    <div class="eyebrow">Análisis de innovación</div>
+    <h2>Radar de Tendencias</h2>
+    <p class="subtitle">Cuatro cuadrantes — pendiente por completar con fuentes específicas</p>
+    <div class="quad-grid">
+      <div class="quad-card">
+        <div class="quad-title">Tecnológicas</div>
+        <div class="trend pending">Pendiente por completar.</div>
+      </div>
+      <div class="quad-card">
+        <div class="quad-title">De mercado</div>
+        <div class="trend pending">Pendiente por completar.</div>
+      </div>
+      <div class="quad-card">
+        <div class="quad-title">De comportamiento / social</div>
+        <div class="trend pending">Pendiente por completar.</div>
+      </div>
+      <div class="quad-card">
+        <div class="quad-title">De competencia</div>
+        <div class="trend pending">Pendiente por completar.</div>
+      </div>
+    </div>
+    <div class="bottom-note"><b>Nota:</b> esta sección se completa con vigilancia del entorno (reportes de mercado, competidores, señales sociales), aún no levantada para este proyecto.</div>
+  </section>
+
+  <!-- 8: MAPA DE PROBLEMAS -->
+  <section class="slide light">
+    <div class="eyebrow">Diseño de la propuesta de valor</div>
+    <h2>Mapa de Problemas</h2>
+    <p class="subtitle">Dolores y alegrías del paciente antes de una cirugía</p>
+    <div class="two-col">
+      <div class="col-card col-dolor">
+        <h3>Dolores del paciente</h3>
+        <p>Incertidumbre y miedo a lo desconocido antes de la cirugía. En la consulta preoperatoria el médico dispone de pocos minutos, con lenguaje técnico centrado en el procedimiento, dejando de lado las sensaciones físicas y emocionales. Muchos pacientes salen sin recordar con claridad lo que se les dijo, y luego firman un consentimiento informado extenso que pocos comprenden del todo — menos de la mitad afirma haberlo entendido realmente.</p>
+      </div>
+      <div class="col-card col-alegria">
+        <h3>Alegrías del paciente</h3>
+        <p>Entender exactamente qué le van a hacer, con un video de su propio procedimiento — no uno genérico — disponible las veces que lo necesite antes de entrar a quirófano. Un médico que no tiene que gastar toda la consulta explicando, y un paciente que llega más tranquilo.</p>
+      </div>
+    </div>
+    <div class="quote-box" style="margin-top:1rem;"><b>Aliviador:</b> el video 3D personalizado dentro del portal, disponible cuantas veces se quiera. <b>Generador adicional:</b> la misma biblioteca sirve como recurso educativo para estudiantes de medicina, enfermería y programas de residencia.</div>
+  </section>
+
+  <!-- 9: PROPUESTA DE VALOR -->
+  <section class="slide light">
+    <div class="eyebrow">Diseño de la propuesta de valor</div>
+    <h2>Propuesta de Valor</h2>
+    <p class="subtitle">Qué ofrece Mi Procedimiento y qué lo hace diferente</p>
+    <div class="two-col">
+      <div class="col-card col-dolor">
+        <h3>Qué lo hace diferente</h3>
+        <p>No es un PDF más ni una llamada de seguimiento. Es la primera vez que el portal del hospital deja de ser solo una herramienta para agendar citas y ver resultados, y se convierte en una herramienta que explica — habilitada por el propio médico según el caso específico de cada paciente.</p>
+      </div>
+      <div class="col-card col-alegria">
         <h3>El plus multimedia y educativo</h3>
         <p>La misma biblioteca de videos 3D no se queda solo para los pacientes: también se habilita, con fines educativos, para estudiantes de medicina, enfermería y programas de residencia, como apoyo dentro y fuera del aula.</p>
       </div>
     </div>
-  </div>
-</section>
+    <div class="value-box">
+      <div class="label">Frase de cierre del pitch</div>
+      <p>Convertir una explicación que se olvida en cinco minutos en una experiencia visual que el paciente sí retiene — pacientes más tranquilos, médicos más eficientes, y un hospital que además se vuelve un aliado educativo para la próxima generación de profesionales de la salud.</p>
+    </div>
+  </section>
 
-<section id="funciona">
-  <div class="section-inner">
-    <div class="eyebrow">Cómo funciona</div>
-    <h2 class="section-title">De la agenda quirúrgica al apartado del paciente.</h2>
-    <div class="steps">
-      <div class="step">
-        <span class="step-num">01</span>
-        <h4>Se agenda la cirugía</h4>
-        <p>El médico programa el procedimiento en el sistema del hospital, como ya lo hace hoy.</p>
+  <!-- 10: QTA -->
+  <section class="slide light">
+    <div class="eyebrow">Análisis de innovación</div>
+    <h2>Análisis de la Tecnología — QTA</h2>
+    <p class="subtitle">Evaluar la tecnología antes de comprometerse con ella — pendiente por completar</p>
+    <div class="three-col">
+      <div class="dim-card">
+        <div class="dim-bar c1"></div>
+        <div class="dim-body"><h3>Madurez / viabilidad técnica</h3><p class="pending">Contenido pendiente por desarrollar.</p></div>
       </div>
-      <div class="step">
-        <span class="step-num">02</span>
-        <h4>Se habilita el video</h4>
-        <p>El médico activa, en el perfil del paciente, el video 3D correspondiente a su procedimiento específico.</p>
+      <div class="dim-card">
+        <div class="dim-bar c2"></div>
+        <div class="dim-body"><h3>Deseabilidad</h3><p class="pending">Contenido pendiente por desarrollar.</p></div>
       </div>
-      <div class="step">
-        <span class="step-num">03</span>
-        <h4>El paciente lo consulta</h4>
-        <p>Aparece en "Mi Procedimiento", dentro del portal, disponible cuando el paciente quiera verlo.</p>
-      </div>
-      <div class="step">
-        <span class="step-num">04</span>
-        <h4>Llega más tranquilo</h4>
-        <p>Entra a quirófano con la explicación clara y repasada, no con una idea a medias de la consulta.</p>
+      <div class="dim-card">
+        <div class="dim-bar c3"></div>
+        <div class="dim-body"><h3>Viabilidad de negocio</h3><p class="pending">Contenido pendiente por desarrollar.</p></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="valor" style="background:var(--paper-dim);">
-  <div class="section-inner">
-    <div class="eyebrow">Modelo de valor</div>
-    <h2 class="section-title">Los seis CORE de generación de valor</h2>
-    <div class="core-grid">
-      <div class="core-card"><h4>Cliente</h4><p>El paciente que va a cirugía y llega con ansiedad por no entender bien qué le van a hacer; también el médico, que necesita explicar sin gastar toda la consulta en eso.</p></div>
-      <div class="core-card"><h4>Oferta</h4><p>Un video 3D del procedimiento específico de cada paciente, habilitado por su propio médico, disponible las veces que lo quiera ver antes de entrar a quirófano.</p></div>
-      <div class="core-card"><h4>Recursos y competencias</h4><p>La capacidad de producir contenido médico 3D personalizado y conectarlo con la infraestructura ya existente del hospital — eso es lo difícil de copiar, no el video en sí.</p></div>
-      <div class="core-card"><h4>Estructura</h4><p>Un equipo pequeño donde un médico valida el contenido, alguien desarrolla el 3D (o se apoya en IA), y alguien más se encarga de la integración técnica con el hospital.</p></div>
-      <div class="core-card"><h4>Ecosistema</h4><p>Alianzas con hospitales como canal principal, y con universidades de medicina como segundo mercado, ya que la misma biblioteca sirve para enseñar a estudiantes y residentes.</p></div>
-      <div class="core-card"><h4>Renovación</h4><p>Actualizar el contenido cada vez que cambien los protocolos médicos, y ajustar el producto con lo que digan pacientes y médicos que ya lo hayan usado.</p></div>
+  <!-- 11: SÍNTESIS FINAL -->
+  <section class="slide light">
+    <div class="eyebrow">Síntesis final</div>
+    <h2>¿Por qué Mi Procedimiento es una innovación real?</h2>
+    <p class="subtitle">Pendiente por completar con todo lo construido en las demás secciones</p>
+    <div class="value-box">
+      <div class="label">Tipo de innovación</div>
+      <p class="pending">Contenido pendiente por desarrollar.</p>
     </div>
+  </section>
 
-    <div class="expo-block">
-      <div>
-        <div class="eyebrow">El reto exponencial</div>
-        <p>Cada video nuevo cuesta tiempo y dinero de animadores — crecer así significa contratar más gente, y eso no escala.</p>
+  <!-- 12: CONEXIÓN -->
+  <section class="slide dark">
+    <div class="decor"></div><div class="decor2"></div>
+    <div class="eyebrow">Condición obligatoria</div>
+    <h2 style="color:#fff;">Todo conectado, no herramientas sueltas</h2>
+    <div class="link-grid">
+      <div class="link-card" onclick="goTo(4)">
+        <h4>PESTEL Tecnológico → Perfil XXI</h4>
+        <p>El factor Tecnológico de IA generativa 3D e integración con el portal hospitalario conecta directamente con una empresa IA-native: si el proceso de creación de videos migra de animadores manuales a generación asistida por IA, no sería solo "agregar IA", sino repensar la arquitectura completa del servicio.</p>
+        <span class="goto">Ver PESTEL ↗</span>
       </div>
-      <div>
-        <p class="expo-arrow">De animación manual → producción con IA generativa 3D</p>
-        <p style="margin-top:.6rem;">Para que ampliar la biblioteca de procedimientos no dependa de cuánta gente se contrata, sino de la capacidad de una plataforma externa que el equipo no tiene que poseer.</p>
+      <div class="link-card" onclick="goTo(5)">
+        <h4>Cadena de valor → Inteligente/digital</h4>
+        <p>La actividad primaria de Marketing y ventas conecta con el rasgo Inteligente/digital: los datos de uso del propio video se convierten en el argumento de venta ante nuevos hospitales, no solo el producto en sí.</p>
+        <span class="goto">Ver Cadena de valor ↗</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="dofa">
-  <div class="section-inner">
-    <div class="eyebrow">Análisis</div>
-    <h2 class="section-title">DOFA</h2>
-    <p class="prose">Toca cada bloque para ver el detalle.</p>
-    <div class="dofa-grid" id="dofaGrid"></div>
-  </div>
-</section>
-
-<section id="equipo" style="background:var(--paper-dim);">
-  <div class="section-inner">
-    <div class="eyebrow">Equipo</div>
-    <h2 class="section-title">Detrás del proyecto</h2>
-    <p class="prose">Proyecto académico desarrollado en la Universidad Militar Nueva Granada.</p>
-    <div class="team-row">
-      <div class="team-card">
-        <div class="role">Autor</div>
-        <h4>Juan Sebastian Vera Legro</h4>
-      </div>
-      <div class="team-card">
-        <div class="role">Autora</div>
-        <h4>Daniela Beltrán Molina</h4>
+      <div class="link-card" onclick="goTo(3)">
+        <h4>DOFA → PESTEL Legal</h4>
+        <p>La Fortaleza "integración con el portal hospitalario" es también el punto que exige los controles del factor Legal (Ley 1581, protección de datos sensibles) — la misma integración que da valor es la que impone la exigencia normativa.</p>
+        <span class="goto">Ver DOFA ↗</span>
       </div>
     </div>
-  </div>
-</section>
+    <p class="subtitle" style="margin-top:1.8rem; font-size:1rem;">Las demás conexiones (Radar, Mapa de Problemas, Propuesta de Valor, QTA y Síntesis) quedan pendientes por completar junto con esas secciones.</p>
+    <div class="footer-inline">Mi Procedimiento · Conexión</div>
+  </section>
 
-<footer>
-  <span>Mi Procedimiento — Universidad Militar Nueva Granada</span>
-  <span id="year"></span>
-</footer>
+  <!-- 13: FUENTES -->
+  <section class="slide light">
+    <div class="eyebrow">Fuentes</div>
+    <h2>Referencias</h2>
+    <ul class="sources-list">
+      <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=60733" target="_blank" rel="noopener">Ley Estatutaria 1751 de 2015 ↗</a><span class="tag">Derecho fundamental a la salud, información clara al paciente (factor Político)</span></li>
+      <li><a href="https://www.statista.com/outlook/hmo/digital-health/worldwide#revenue" target="_blank" rel="noopener">Statista — Digital Health Outlook ↗</a><span class="tag">Crecimiento del mercado global de salud digital (factor Económico)</span></li>
+      <li><a href="https://www.paho.org/es/colombia-salud-digital" target="_blank" rel="noopener">PAHO — Colombia, salud digital ↗</a><span class="tag">Inversión hospitalaria en transformación digital (factor Económico)</span></li>
+      <li><a href="https://www.nvidia.com/en-us/industries/healthcare-life-sciences/" target="_blank" rel="noopener">NVIDIA — Healthcare and Life Sciences ↗</a><span class="tag">Herramientas de IA para imagenología y salud digital (factor Tecnológico)</span></li>
+      <li><a href="https://www.microsoft.com/en-us/ai/health" target="_blank" rel="noopener">Microsoft — AI for Health ↗</a><span class="tag">Modelos y flujos de IA aplicados a salud (factor Tecnológico)</span></li>
+      <li><a href="https://www.minambiente.gov.co" target="_blank" rel="noopener">Ministerio de Ambiente de Colombia ↗</a><span class="tag">Referencia institucional (factor Ecológico)</span></li>
+      <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981" target="_blank" rel="noopener">Ley 1581 de 2012 ↗</a><span class="tag">Protección de datos personales y sensibles (factor Legal)</span></li>
+      <li><span class="noLink">Resolución 1995 de 1999</span><span class="tag">Manejo y reserva de la historia clínica (factor Legal, sin enlace verificado)</span></li>
+      <li><span class="noLink">Ley 23 de 1981</span><span class="tag">Ética médica — revisión y aprobación de contenidos por especialistas (factor Legal, sin enlace verificado)</span></li>
+    </ul>
+    <p class="subtitle" style="margin-top:1.2rem; font-size:.8rem;">Las secciones Radar de Tendencias, QTA y Síntesis final quedan pendientes de fuentes adicionales.</p>
+  </section>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+</div>
 
-  const DOFA = [
-    { letter:'D', name:'Debilidades', cls:'dofa-D', items:[
-      'Altos costos de producción en archivos multimedia con IA o animadores.',
-      'Tiempo de desarrollo de una biblioteca amplia de procedimientos.',
-      'Dependencia de la infraestructura tecnológica de los portales de los hospitales.',
-      'Necesidad de actualización constante de los procedimientos.'
-    ]},
-    { letter:'O', name:'Oportunidades', cls:'dofa-O', items:[
-      'Incremento de la cultura general sobre cirugías y procedimientos.',
-      'Alianza con universidades para la educación médica.',
-      'Aplicación en diferentes instituciones.',
-      'Nuevos servicios: pre operatorio, recuperación y cuidados posteriores.',
-      'Posibilidad de apoyo externo: alianzas, financiación, programas de innovación.',
-      'Escalabilidad internacional.'
-    ]},
-    { letter:'F', name:'Fortalezas', cls:'dofa-F', items:[
-      'Información visual y comprensible.',
-      'Acceso ilimitado al contenido.',
-      'Integración con el portal hospitalario y vinculación al historial del paciente.',
-      'Reducción de la incertidumbre.',
-      'Recurso educativo reutilizable.'
-    ]},
-    { letter:'A', name:'Amenazas', cls:'dofa-A', items:[
-      'Limitaciones presupuestarias futuras.',
-      'Cambios en las normativas sobre información médica.',
-      'Riesgos de ciberseguridad.',
-      'Desactualización del contenido.',
-      'Fallas técnicas con los servidores.'
-    ]},
-  ];
+<div class="nav">
+  <button id="prevBtn" aria-label="Anterior">‹</button>
+  <span class="counter" id="counter">1 / 13</span>
+  <button id="nextBtn" aria-label="Siguiente">›</button>
+</div>
+<div class="hint">← → para navegar · clic en ▸ para revelar</div>
 
-  const grid = document.getElementById('dofaGrid');
-  DOFA.forEach(block=>{
-    const card = document.createElement('div');
-    card.className = `dofa-card ${block.cls}`;
-    card.innerHTML = `
-      <div class="dofa-head">
-        <h4>${block.letter} · ${block.name}</h4>
-        <span class="dofa-chevron">▸</span>
-      </div>
-      <ul class="dofa-list">${block.items.map(i=>`<li>${i}</li>`).join('')}</ul>
-    `;
-    card.addEventListener('click', ()=> card.classList.toggle('open'));
-    grid.appendChild(card);
-  });
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
