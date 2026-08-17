@@ -153,6 +153,47 @@ h2 { font-size: 1.85rem; color: var(--ink); }
 .sources-list .tag { display: block; font-size: .72rem; color: var(--muted); font-weight: normal; }
 .sources-list .noLink { font-weight: 600; color: var(--ink); }
 
+/* ---- árbol de problemas (mapa de problemas) ---- */
+.tree-section { display: grid; grid-template-columns: 1.15fr 1fr; gap: 2.2rem; margin-top: 1.3rem; align-items: center; }
+
+.tree-diagram { display: flex; flex-direction: column; align-items: center; }
+.tree-label { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--sage); display: flex; align-items: center; gap: .5rem; }
+.tree-label span { color: var(--muted); font-weight: 500; text-transform: none; letter-spacing: 0; }
+.tree-label-top, .tree-label-bottom { width: 100%; }
+.tree-label-top::after, .tree-label-bottom::after { content: ''; flex: 1; border-top: 2px dashed currentColor; opacity: .35; }
+.tree-label-bottom { color: var(--terra); margin-top: .1rem; }
+
+.tree-crown, .tree-root { width: 100%; border-radius: 8px; padding: 1rem 1.3rem; }
+.tree-crown { background: var(--tint1); margin-top: .6rem; }
+.tree-crown p { color: #33423D; }
+.tree-root { background: var(--tint2); margin-bottom: .6rem; }
+.tree-root p { color: #4A3626; }
+.tree-crown p, .tree-root p { margin: 0; font-size: .87rem; line-height: 1.45; }
+
+.tree-connector { width: 2px; height: 1rem; background: var(--ink); opacity: .2; }
+
+.tree-trunk-row { width: 100%; display: flex; align-items: center; gap: 1rem; }
+.tree-label-center { flex: 0 0 auto; color: var(--terra); text-align: right; line-height: 1.3; white-space: nowrap; }
+.tree-label-center::before { content: ''; width: 1.4rem; border-top: 2px dashed var(--terra); opacity: .5; margin-right: .3rem; }
+.tree-trunk { flex: 1; background: var(--terra); color: var(--white); border-radius: 8px; padding: 1.05rem 1.5rem; box-shadow: 0 10px 24px rgba(180,103,74,.28); }
+.tree-trunk p { margin: 0; font-size: .87rem; line-height: 1.45; font-weight: 500; }
+
+.tree-side-list { display: flex; flex-direction: column; gap: .7rem; }
+.side-card { display: flex; gap: .8rem; align-items: flex-start; border-radius: 6px; padding: .85rem 1rem; }
+.side-icon { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); }
+.side-icon svg { width: 18px; height: 18px; }
+.side-body h4 { font-size: .86rem; margin: 0 0 .25rem; font-family: 'Fraunces', serif; font-weight: 600; }
+.side-body p { font-size: .78rem; line-height: 1.4; color: var(--muted); margin: 0; }
+
+.side-gold { background: var(--tint2); } .side-gold .side-icon { background: var(--gold); } .side-gold h4 { color: #8A6417; }
+.side-slate { background: #ECEEF6; } .side-slate .side-icon { background: var(--slate); } .side-slate h4 { color: var(--slate); }
+.side-sage { background: var(--tint1); } .side-sage .side-icon { background: var(--sage); } .side-sage h4 { color: var(--sage); }
+.side-terra { background: #F5E7E0; } .side-terra .side-icon { background: var(--terra); } .side-terra h4 { color: var(--terra); }
+
+@media (max-width: 900px) {
+  .tree-section { grid-template-columns: 1fr; }
+}
+
 .footer-inline { position: absolute; top: .7rem; right: 6vw; font-size: .6rem; color: var(--muted); opacity: .7; }
 .slide.dark .footer-inline { color: #8CA69D; }
 
