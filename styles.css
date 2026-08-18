@@ -3,7 +3,7 @@
   --sage:#4D5A77; --sage-dim:#E0E9EC; --gold:#8E97B6;
   --slate:#738997; --terra:#ABC2D9;
   --line:rgba(0,0,0,.14); --muted:#4D5A77; --white:#FFFFFF;
-  --tint1:#E0E9EC; --tint2:#ABC2D9; --card1:#E0E9EC; --card2:#ABC2D9; --gray:#8E97B6;
+  --tint1:#FFFFFF; --tint2:#ABC2D9; --card1:#E0E9EC; --card2:#ABC2D9; --gray:#8E97B6;
 }
 * { box-sizing: border-box; }
 html {
